@@ -1,5 +1,17 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Roboto } from "next/font/google";
+import { Playwrite_IN } from "next/font/google";
+const roboto = Roboto({
+  subsets:['latin'],
+  weight:['400','700'],
+});
+
+
+const playWrite = Playwrite_IN({
+  subsets:['latin'],
+  weight:['100','400'],
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,12 +29,23 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const header = (
+    <header>
+      this is top of the page
+    </header>
+  )
+
+  const footer = (
+    <footer>
+      This is the bottom of the page
+    </footer>
+  )
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {header}
+          {children}
+        {footer}
       </body>
     </html>
   );
